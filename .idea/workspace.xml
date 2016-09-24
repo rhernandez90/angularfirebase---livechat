@@ -24,7 +24,11 @@
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="427">
+<<<<<<< HEAD
               <caret line="52" column="47" selection-start-line="52" selection-start-column="47" selection-end-line="52" selection-end-column="47" />
+=======
+              <caret line="52" column="32" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
+>>>>>>> ea02abcbcf65b3c1012f09976b68f54d6f81d37c
               <folding />
             </state>
           </provider>
@@ -205,12 +209,20 @@
       <option name="presentableId" value="Default" />
       <updated>1474650967349</updated>
       <workItem from="1474689413179" duration="27469000" />
+<<<<<<< HEAD
       <workItem from="1474725564737" duration="1193000" />
+=======
+      <workItem from="1474725564737" duration="821000" />
+>>>>>>> ea02abcbcf65b3c1012f09976b68f54d6f81d37c
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="28662000" />
+=======
+    <option name="totallyTimeSpent" value="28290000" />
+>>>>>>> ea02abcbcf65b3c1012f09976b68f54d6f81d37c
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1378" height="735" extended-state="0" />
@@ -568,7 +580,11 @@
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="427">
+<<<<<<< HEAD
           <caret line="52" column="47" selection-start-line="52" selection-start-column="47" selection-end-line="52" selection-end-column="47" />
+=======
+          <caret line="52" column="32" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
+>>>>>>> ea02abcbcf65b3c1012f09976b68f54d6f81d37c
           <folding />
         </state>
       </provider>
