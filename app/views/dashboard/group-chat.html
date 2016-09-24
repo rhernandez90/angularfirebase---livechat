@@ -1,0 +1,26 @@
+<div class="group-chat">
+    <div class="jumbotron">
+            <h3>Chatea con todos</h3>
+    </div>
+
+    <div id="chat-container" class="jumbotron" >
+        <div id="chats">
+            <div class="col-sm-7" ng-repeat="msg in messagesList"  ng-class="userId == msg.userId?'col-sm-offset-5':''">
+                <div class="alert " ng-class="userId == msg.userId?'alert-success':'alert-info'">
+                    <strong>{{msg.nickName + "  " + msg.dateTime + ":"}}</strong>{{msg.message}}
+                </div>
+            </div>
+            <br/><br/><br/>
+            <a id="bottom"></a>
+        </div>
+
+
+    </div>
+
+    <div class="input-group">
+        <input type="text" class="form-control" ng-model="message" ng-keypress="newMessage($event)">
+        <span class="input-group-addon">
+            <span class="glyphicon glyphicon-ok"></span>
+        </span>
+    </div>
+</div>

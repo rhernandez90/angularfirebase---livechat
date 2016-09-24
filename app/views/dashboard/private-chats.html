@@ -1,0 +1,55 @@
+<div class="private-chat">
+	<!--a ui-sref="overview" class="pull-right btn btn-primary btn-outline btn-rounded">Back to Overview</a>
+	<h2>Reports <small>Work with Chart.js and D3</small></h2-->
+	<span class="glyphicon glyphicon-dashboard bg-fade"></span>
+	<div class="jumbotron">
+        <div class="container">
+            <div  class="col-sm-5 ">
+                <h3>Users</h3>
+
+                <div class="form-group has-success has-feedback">
+                    <label class="control-label sr-only" for="inputSuccess5">Hidden label</label>
+                    <input type="text" class="form-control" id="inputSuccess5" aria-describedby="inputSuccess5Status" ng-model="userFilter.nickName">
+                    <span class="glyphicon glyphicon-search form-control-feedback" aria-hidden="true"></span>
+                    <span id="inputSuccess5Status" class="sr-only">(success)</span>
+                </div>
+                <div id="users-content">
+                    <div class="panel panel-primary"
+                         ng-repeat="(key, value) in users | filter:userFilter"
+                         ng-click="target(key,value)"
+                         ng-hide="userId==key"
+                         ng-class="isNewMessage(key,value)">
+
+                        <div class="panel-body">
+                            <!--pre>{{value.privateChat[userId].new | json}} </pre-->
+                            {{value.nickName}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-7">
+                <strong>Chat with:</strong> {{targetNick}}
+                <div id="chat-container" class="jumbotron" >
+                    <div id="chats">
+                        <div class="col-sm-7" ng-repeat="msg in messagesList"  ng-class="userId == msg.userId?'col-sm-offset-5':''">
+                            <div class="alert " ng-class="userId == msg.userId?'alert-success':'alert-info'">
+                                <strong>{{msg.nickName + "  " + msg.dateTime + ":"}}</strong>{{msg.message}}
+                            </div>
+                        </div>
+                        <br/><br/>
+                        <a id="bottom"></a>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" class="form-control" ng-model="message" ng-disabled="targetUserId===undefined" ng-keypress="newMessage($event)">
+                    <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-ok"></span></span>
+                </div>
+            </div>
+
+        </div>
+
+	</div>
+</div>
