@@ -46,7 +46,11 @@
     "serve-index": "^1.6.2",
     "serve-static": "^1.9.1",
     "wiredep": "^2.2.2",
-    "yargs": "^3.3.1"
+    "yargs": "^3.3.1",
+    "bower": "1.7.9"
+  },
+  "scripts":{
+    "postinstall":"bower install"
   },
   "dependencies": {}
 }
