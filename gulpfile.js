@@ -88,7 +88,7 @@ gulp.task('connect', ['styles'], function() {
     .use(serveIndex('app'));
 
   require('http').createServer(app)
-    .listen(3000)
+    .listen(9000)
     .on('listening', function() {
       console.log('Started connect web server on http://localhost:9000');
     });
@@ -96,7 +96,7 @@ gulp.task('connect', ['styles'], function() {
 
 gulp.task('serve', ['wiredep', 'connect', 'fonts', 'watch'], function() {
   if (argv.open) {
-    require('opn')('http://localhost:3000');
+    require('opn')('http://localhost:9000');
   }
 });
 
