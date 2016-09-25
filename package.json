@@ -4,7 +4,11 @@
     "node": ">=0.10.0"
   },
   "scripts": {
+<<<<<<< HEAD
     "start": "./node_modules/gulp/bin/gulp serve",
+=======
+    "start": "gulp serve",
+>>>>>>> 4a7d3b103f494870e91c8a43f883c01ce302d802
     "postinstall": "./node_modules/bower/bin/bower install"
   },
   "devDependencies": {
