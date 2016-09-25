@@ -4,8 +4,8 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "start"      : "./node_modules/gulp/bin/gulp serve",
-    "postinstall": "./node_modules/bower/bin/bower install"
+   "start"      : "./node_modules/gulp/bin/gulp serve",
+   "postinstall": "./node_modules/bower/bin/bower install"
   },
   "devDependencies": {
     "apache-server-configs": "^2.11.0",
