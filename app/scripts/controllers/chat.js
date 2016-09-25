@@ -13,9 +13,11 @@ angular.module('yapp')
       $scope.$apply();
 
 
+      $timeout(function(){
+        $location.hash('bottom');
+        $anchorScroll();
+      },1000);
 
-      $location.hash('bottom');
-      $anchorScroll();
     });
 
 
@@ -63,18 +65,27 @@ angular.module('yapp')
     fireDB.ref('users').on('value',function (snapshot) {
       $scope.users = snapshot.val();
       $scope.$apply();
+      downScroll();
+
     });
 
-
+    function downScroll() {
+      $timeout(function(){
+        $location.hash('bottom');
+        $anchorScroll();
+      },1000);
+    }
 
     $scope.target = function(targetUserId,target){
       $scope.targetUserId = targetUserId;
       $scope.targetNick   = target.nickName;
+      $scope.messagesList = {};
 
       if(target.privateChat !== undefined){
 
         if (target.privateChat[auth.getId()] !== undefined){
           $scope.messagesList = target.privateChat[auth.getId()].chats;
+          downScroll();
           target.privateChat[auth.getId()].new = 0;
           $scope.targetChat = true;
           return false;
@@ -85,20 +96,39 @@ angular.module('yapp')
 
         $scope.targetChat = undefined;
       }
+
       $scope.users[auth.getId()].privateChat[targetUserId].new = 0;
       $scope.messagesList = $scope.users[auth.getId()].privateChat[targetUserId].chats;
-
+      downScroll();
     }
 
 
-    $scope.isNewMessage = function(targetUserId,target){
-      if(target.privateChat[auth.getId()].new == 1 || $scope.users[auth.getId()].privateChat[targetUserId].new == 1){
-        return 'panel-warning';
+    $scope.isNewMessage = function(targetUserId,target) {
+      if (target.privateChat != undefined) {
+        if (target.privateChat[auth.getId()] != undefined) {
+
+          if (target.privateChat[auth.getId()].new == 1)
+            return 'panel-warning';
+          return '';
+
+        }
       }
-      else{
-        return 'panel-primary';
+
+      if ($scope.users[auth.getId()].privateChat != undefined) {
+        if ($scope.users[auth.getId()].privateChat[targetUserId] != undefined) {
+
+          if ($scope.users[auth.getId()].privateChat[targetUserId].new == 1)
+            return 'panel-warning';
+          return '';
+
+        }
       }
-    }
+
+
+    };
+
+
+
 
     $scope.newMessage = function (keyEvent) {
       if (keyEvent.which === 13) {
@@ -108,14 +138,14 @@ angular.module('yapp')
           nickName: auth.getNickName(),
           message: $scope.message
         };
-
+        $scope.message = '';
         if($scope.targetChat !== undefined){
           var key  = fireDB.ref('users/'+$scope.targetUserId+'/privateChat/'+auth.getId()+'/chats').push().key
           var update = {};
           update[key] = jmessage;
           var post =  fireDB.ref('users/'+$scope.targetUserId+'/privateChat/'+auth.getId()).update({new:1}).then(function(res){});
           var post =  fireDB.ref('users/'+$scope.targetUserId+'/privateChat/'+auth.getId()+'/chats').update(update).then(function(res){});
-
+          $scope.messagesList[key] = jmessage;
 
         }else{
 
@@ -125,9 +155,9 @@ angular.module('yapp')
 
           fireDB.ref('users/'+auth.getId()+'/privateChat/'+$scope.targetUserId).update({new:1}).then(function(res){});
           var post =  fireDB.ref('users/'+auth.getId()+'/privateChat/'+$scope.targetUserId+'/chats').update(update).then(function(res){});
-
+          $scope.messagesList[key] = jmessage;
         }
-        $scope.message = '';
+
       }
     }
   });
